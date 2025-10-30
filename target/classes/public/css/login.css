@@ -1,0 +1,74 @@
+body {
+    background: linear-gradient(135deg, #1b0202, rgb(102, 27, 27));
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background-color: #400000;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+    width: 300px;
+}
+
+.logo {
+    font-size: 60px;
+    color: pink;
+}
+
+h1 {
+    font-family: "Brush Script MT", cursive;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+a {
+    color: white;
+    font-weight: bold;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+button {
+    background-color: #b3a9a9;
+    border: none;
+    padding: 6px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #d1caca;
+}
