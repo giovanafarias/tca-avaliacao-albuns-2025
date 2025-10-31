@@ -8,10 +8,10 @@
 </head>
 <body>
   <div class="login-box">
-    <div class="logo">??</div>
+    <img src="uploads/logo.png" alt="Logo">
     <h1>Heartbeat</h1>
     <form>
-      <label for="usuario">Nome de usuário</label>
+      <label for="usuario">Username</label>
       <input type="text" id="usuario" placeholder="Digite seu nome">
       
       <label for="senha">Senha</label>
