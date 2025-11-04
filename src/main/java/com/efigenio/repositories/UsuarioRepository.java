@@ -9,4 +9,13 @@ public class UsuarioRepository {
     public UsuarioRepository() {
         this.usuarioDAO = new UsuarioDAOImpl();
     }
+
+    public Usuario criaUsuario(Usuario usuario) {
+        Usuario usuarioCriado = this.usuarioDAO.criaUsuario(usuario);
+        return usuarioCriado;
+    }
+
+    public Usuario loginUsuario(Usuario usuario) {
+        return this.usuarioDAO.autenticaUsuario(usuario.getUsername(), usuario.getSenha());
+    }
 }

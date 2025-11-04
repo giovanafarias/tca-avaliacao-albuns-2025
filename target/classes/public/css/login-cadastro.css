@@ -10,26 +10,20 @@ body {
     align-items: center;
 }
 
-.login-box {
+.box {
     background-color: #400000;
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
-    width: 500px;
+    width: 400px;
 }
 
-.login-box img {
+.box img {
     width: 250px; 
     max-width: 80%; 
     height: auto;
     margin: 10px auto;
     display: block;
-  }
-
-
-.logo {
-    font-size: 60px;
-    color: pink;
 }
 
 h1 {

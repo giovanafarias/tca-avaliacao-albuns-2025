@@ -5,6 +5,9 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Map;
 
+import com.efigenio.models.Usuario;
+import com.efigenio.repositories.UsuarioRepository;
+
 import io.javalin.http.Handler;
 
 public class UsuarioController {
@@ -15,22 +18,21 @@ public class UsuarioController {
 
     public Handler post = ctx -> {
         String nome = ctx.formParam("nome");
-        String telefone = ctx.formParam("telefone");
+        String username = ctx.formParam("username");
         String email = ctx.formParam("email");
+        String senha = ctx.formParam("senha");
 
-        System.out.println(nome);
-        System.out.println(telefone);
-        System.out.println(email);
-        String mensagem = "Contato: "+ nome+ "Cadastrado";
+        UsuarioRepository usuarioRepository = new UsuarioRepository();
+        Usuario usuario = new Usuario(null, nome, username, email, senha, null, null);
 
-        String idade= "19"; 
-        Integer idadeInt = Integer.parseInt(idade);
+        Usuario criado = usuarioRepository.criaUsuario(usuario);
 
-        // LocalDate localDate = LocalDate.now();
-        String  dateStr = null;
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date date = (Date) sdf.parse(dateStr);
+        if (criado == null) {
+            ctx.render("cadastro.ftl", Map.of("erro", "Usuário ou e-mail já cadastrado!"));
+            return;
+        }
 
-        ctx.render("visualizarContato.ftl",Map.of("mensagem",mensagem));
+        ctx.sessionAttribute("usuarioLogado", usuario);
+        ctx.redirect("/home");
     };
 }

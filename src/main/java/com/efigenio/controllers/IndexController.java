@@ -1,64 +1,38 @@
 package com.efigenio.controllers;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.util.Map;
 
-import javax.print.DocFlavor.STRING;
-
-import com.efigenio.models.Pessoa;
-import com.efigenio.repositories.PessoaRepository;
+import com.efigenio.models.*;
+import com.efigenio.repositories.*;
 
 import io.javalin.http.Handler;
 
 public class IndexController {
-    private String caminhoArquivo = "arquivo.txt";
 
     public Handler get = ctx -> {
-        PessoaRepository pessoaRepository = new PessoaRepository();
-        gravarArquivoDeTexto();
-
-        Pessoa pessoa = new Pessoa("Mitsugui", 16);
-
-        pessoaRepository.salvarPessoa(pessoa);
-
-        lerArquivoDeTexto();
-
         ctx.render("index.ftl");
     };
 
-    public void lerArquivoDeTexto() throws FileNotFoundException {
+    public Handler post = ctx -> {
+        String username = ctx.formParam("username");
+        String senha = ctx.formParam("senha");
 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(caminhoArquivo));
+        UsuarioRepository usuarioRepository = new UsuarioRepository();
+        Usuario usuarioTentandoLogin = new Usuario(null, null, username, null, senha, null, null);
 
-            String linha;
+        Usuario usuarioAutenticado = usuarioRepository.loginUsuario(usuarioTentandoLogin);
 
-            while ((linha = br.readLine()) != null) {
-                System.out.println(linha);
-            }
+        if (usuarioAutenticado != null) {
+            ctx.sessionAttribute("usuarioLogado", usuarioAutenticado);
 
-            br.close();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            ctx.render("paginaInicial.ftl", Map.of(
+                "usuario", usuarioAutenticado
+            ));
+        } else {
+            ctx.render("index.ftl", Map.of(
+                "erro", "Usuário ou senha incorretos!"
+            ));
         }
-
-    }
-
-    public void gravarArquivoDeTexto() {
-        String conteudo = "menssagem do arquivo de texto";
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(caminhoArquivo));
-            bw.write(conteudo);
-            bw.newLine();
-
-            bw.close();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-    }
+    };
 
 }

@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda INFO24</title>
+    <title>Heartbeat</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-    <# if mensagem.equals(String)
-
-    <p><b>Messagem: ${mensagem}</b></p>
+oi
 </body>
 </html>

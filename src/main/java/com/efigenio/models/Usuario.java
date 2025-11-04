@@ -1,6 +1,4 @@
 package com.efigenio.models;
-import java.util.ArrayList;
-import com.efigenio.Main;
 
 public class Usuario {
     private Integer id;
@@ -8,16 +6,20 @@ public class Usuario {
     private String username;
     private String email;
     private String senha;
+    private String foto;
     private Avaliacao[] avaliacoes;
     
-    public Usuario(Integer id, String nome, String username, String email, String senha, Avaliacao[] avaliacoes){
+    public Usuario(Integer id, String nome, String username, String email, String senha, String foto,Avaliacao[] avaliacoes){
         this.id = id;
         this.nome = nome;
         this.username = username;
         this.email = email;
         this.senha = senha;
+        this.foto = foto;
         this.avaliacoes = avaliacoes;
     }
+
+    public Usuario() {}
 
     public Integer getId() {
         return id;
@@ -59,6 +61,14 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
     public Avaliacao[] getAvaliacoes() {
         return avaliacoes;
     }
@@ -73,33 +83,5 @@ public class Usuario {
 
     public void fazerLogin(Avaliacao contato) {
         
-    }
-
-    public void criarConta() {
-
-    }
-
-    public void removerConta() {
-
-    }
-
-    public void editarPerfil() {
-
-    }
-
-    public void avaliarAlbum() {
-
-    }
-
-    public void favoritarAlbum() {
-
-    }
-
-    public void acessarAlbunsFavoritos() {
-
-    }
-    
-    public void adicionarFavoritosAoPerfil() {
-
     }
 }

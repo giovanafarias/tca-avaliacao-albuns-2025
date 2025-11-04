@@ -2,7 +2,9 @@ package com.efigenio.DAOs;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+// import java.sql.Exception;
 import java.util.List;
 
 import com.efigenio.database.FabricaDeConexao;
@@ -19,20 +21,132 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
     @Override
     public Usuario criaUsuario(Usuario usuario) {
-        String query = "INSERT INTO usuario_tca (nome, username, email, senha) VALUES (?, ?, ?, ?)";
-        
-        try (PreparedStatement pstm = conexao.prepareStatement(query)) {
+        try {
+            String checkQuery = "SELECT COUNT(*) AS total FROM tca_usuario WHERE username = ? OR email = ?";
+            PreparedStatement checkStmt = conexao.prepareStatement(checkQuery);
+            checkStmt.setString(1, usuario.getUsername());
+            checkStmt.setString(2, usuario.getEmail());
+            ResultSet rs = checkStmt.executeQuery();
+
+            if (rs.next() && rs.getInt("total") > 0) {
+                System.out.println("Usuário ou e-mail já existentes!");
+                return null; 
+            }
+
+            rs.close();
+            checkStmt.close();
+
+            String insertQuery = "INSERT INTO tca_usuario (nome, username, email, senha) VALUES (?, ?, ?, ?)";
+            PreparedStatement pstm = conexao.prepareStatement(insertQuery);
+
             pstm.setString(1, usuario.getNome());
             pstm.setString(2, usuario.getUsername());
             pstm.setString(3, usuario.getEmail());
             pstm.setString(4, usuario.getSenha());
-            
+
             pstm.executeUpdate();
-            
+            pstm.close();
+
+            System.out.println("Usuário criado com sucesso!");
+            return usuario;
+
         } catch (SQLException e) {
-            System.out.println("Erro ao criar usuário: " + e.getMessage());
+            System.out.println(e.getMessage());
         }
-        
-        return usuario;
+
+        return null;
+    }
+    
+    @Override
+    public Usuario autenticaUsuario(String username, String senha) {
+        String query = "SELECT * FROM tca_usuario WHERE username = ? AND senha = ?";
+
+        try (PreparedStatement pstm = conexao.prepareStatement(query)) {
+            pstm.setString(1, username);
+            pstm.setString(2, senha);
+
+            try (ResultSet rs = pstm.executeQuery()) {
+                if (rs.next()) {
+                    Usuario usuario = new Usuario();
+                    usuario.setId(rs.getInt("id_usuario"));
+                    usuario.setNome(rs.getString("nome"));
+                    usuario.setUsername(rs.getString("username"));
+                    usuario.setEmail(rs.getString("email"));
+                    usuario.setSenha(rs.getString("senha"));
+                    return usuario;
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+       return null;
+    }
+
+
+    @Override
+    public Usuario getUsuarioPorId(Integer id) {
+        try {
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }    
+
+        return null;
+    }
+
+    @Override
+    public Usuario removerConta(Integer id) {
+        try {
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }    
+
+        return null;
+    }
+
+    @Override
+    public Usuario editarPerfil(Integer id, Usuario usuarioAtualizado) {
+        try {
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }    
+
+        return null;
+    }
+
+    @Override
+    public Usuario avaliarAlbum(Usuario usuario, Integer albumId, Integer nota, String comentario) {
+        try {
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }    
+
+        return null;
+    }
+
+    @Override
+    public Usuario favoritarAlbum(Usuario usuario, Integer albumId) {
+        try {
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }    
+
+        return null;
+    }
+
+    @Override
+    public Usuario acessarAlbunsFavoritos(Usuario usuario) {
+        try {
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }    
+
+        return null;
     }
 }
