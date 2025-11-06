@@ -25,12 +25,10 @@ public class IndexController {
         if (usuarioAutenticado != null) {
             ctx.sessionAttribute("usuarioLogado", usuarioAutenticado);
 
-            ctx.render("paginaInicial.ftl", Map.of(
-                "usuario", usuarioAutenticado
-            ));
+            ctx.redirect("/home");
         } else {
             ctx.render("index.ftl", Map.of(
-                "erro", "Usuário ou senha incorretos!"
+                "erro", "Usuï¿½rio ou senha incorretos!"
             ));
         }
     };

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heartbeat - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/login-cadastro.css">
 </head>
 <body>
@@ -11,7 +12,7 @@
     <img src="uploads/logo.png" alt="Logo">
     <h1>Heartbeat</h1>
     <form action="/login" method="post">
-      <label for="usuario">Nome de usuário</label>
+      <label for="usuario">Nome de usuï¿½rio</label>
       <input type="text" id="usuario" name="username" placeholder="Digite seu nome">
       
       <label for="senha">Senha</label>

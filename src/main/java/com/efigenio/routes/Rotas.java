@@ -24,6 +24,8 @@ public class Rotas {
         app.post("/cadastro", usuarioController.post);
 
         app.get("/home", paginaInicialController.get);
+
+        app.get("/perfil/:username", usuarioController.getPerfil);
     }
 
 }

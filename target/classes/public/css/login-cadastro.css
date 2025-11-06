@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(135deg, #1b0202, rgb(102, 27, 27));
+    background-color: #111;
     font-family: Arial, sans-serif;
     color: white;
     text-align: center;
@@ -11,7 +11,7 @@ body {
 }
 
 .box {
-    background-color: #400000;
+    background: linear-gradient(135deg, #3b0202, #661b1b);
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
@@ -27,7 +27,7 @@ body {
 }
 
 h1 {
-    font-family: "Brush Script MT", cursive;
+    font-family: "Dancing Script", cursive;
     font-size: 40px;
     margin-bottom: 30px;
 }

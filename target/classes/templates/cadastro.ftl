@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda INFO24</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/login-cadastro.css">
 </head>
 <body>
@@ -17,7 +18,7 @@
             <input type="text" id="nome" name="nome" placeholder="Seu nome">
 
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Nome de usuário">
+            <input type="text" id="username" name="username" placeholder="Nome de usuï¿½rio">
 
             <label for="email">E-mail</label>
             <input type="email" id="email" name="email" placeholder="Digite seu email">

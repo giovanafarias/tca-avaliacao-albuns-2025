@@ -80,8 +80,4 @@ public class Usuario {
     public String toString() {
         return this.nome + " - " + this.username;
     }
-
-    public void fazerLogin(Avaliacao contato) {
-        
-    }
 }

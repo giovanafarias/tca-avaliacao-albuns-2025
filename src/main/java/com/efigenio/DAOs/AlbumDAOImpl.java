@@ -39,8 +39,7 @@ public class AlbumDAOImpl implements AlbumDAO {
                         rs.getString("capa"),
                         artista
                     );
-            albuns.add(album);
-
+                albuns.add(album);
             }
             rs.close();
         } catch (SQLException e) {

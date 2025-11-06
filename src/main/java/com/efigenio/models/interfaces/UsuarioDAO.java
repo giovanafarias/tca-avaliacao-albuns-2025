@@ -1,4 +1,6 @@
 package com.efigenio.models.interfaces;
+import java.util.List;
+
 import com.efigenio.models.Usuario;
 
 public interface UsuarioDAO {
@@ -6,7 +8,7 @@ public interface UsuarioDAO {
 
     Usuario autenticaUsuario(String username, String senha);
 
-    Usuario getUsuarioPorId(Integer id);
+    Usuario buscarPorUsername(String username);
 
     Usuario removerConta(Integer id);
 

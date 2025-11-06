@@ -28,11 +28,27 @@ public class UsuarioController {
         Usuario criado = usuarioRepository.criaUsuario(usuario);
 
         if (criado == null) {
-            ctx.render("cadastro.ftl", Map.of("erro", "Usuário ou e-mail já cadastrado!"));
+            ctx.render("cadastro.ftl", Map.of("erro", "Usuï¿½rio ou e-mail jï¿½ cadastrado!"));
             return;
         }
 
         ctx.sessionAttribute("usuarioLogado", usuario);
         ctx.redirect("/home");
+    };
+
+    public Handler getPerfil = ctx -> {
+        String username = ctx.pathParam("username");
+
+        UsuarioRepository usuarioRepository = new UsuarioRepository();
+        Usuario usuario = usuarioRepository.buscarPorUsername(username);
+
+        if (usuario == null) {
+            ctx.status(404).result("Usuï¿½rio nï¿½o encontrado");
+            return;
+        }
+
+        ctx.render("perfil.ftl", Map.of(
+            "usuarioPerfil", usuario
+        ));
     };
 }

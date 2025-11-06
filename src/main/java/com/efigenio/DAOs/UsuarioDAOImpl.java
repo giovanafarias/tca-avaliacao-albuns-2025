@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 // import java.sql.Exception;
 import java.util.List;
 
 import com.efigenio.database.FabricaDeConexao;
+import com.efigenio.models.Avaliacao;
 import com.efigenio.models.Usuario;
 import com.efigenio.models.interfaces.UsuarioDAO;
 
@@ -29,7 +31,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             ResultSet rs = checkStmt.executeQuery();
 
             if (rs.next() && rs.getInt("total") > 0) {
-                System.out.println("Usuário ou e-mail já existentes!");
+                System.out.println("Usuï¿½rio ou e-mail jï¿½ existentes!");
                 return null; 
             }
 
@@ -47,7 +49,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             pstm.executeUpdate();
             pstm.close();
 
-            System.out.println("Usuário criado com sucesso!");
+            System.out.println("Usuï¿½rio criado com sucesso!");
             return usuario;
 
         } catch (SQLException e) {
@@ -85,14 +87,29 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 
     @Override
-    public Usuario getUsuarioPorId(Integer id) {
-        try {
-            
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }    
+    public Usuario buscarPorUsername(String username) {
+        String query = "SELECT * FROM tca_usuario WHERE username = ?";
 
-        return null;
+        try {
+            PreparedStatement pstm = conexao.prepareStatement(query);
+            pstm.setString(1, username);
+            ResultSet rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(rs.getInt("id_usuario"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setUsername(rs.getString("username"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setSenha(rs.getString("senha"));
+                return usuario;
+            }
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+       return null;
     }
 
     @Override

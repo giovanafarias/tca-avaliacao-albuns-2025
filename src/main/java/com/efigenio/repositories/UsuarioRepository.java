@@ -18,4 +18,8 @@ public class UsuarioRepository {
     public Usuario loginUsuario(Usuario usuario) {
         return this.usuarioDAO.autenticaUsuario(usuario.getUsername(), usuario.getSenha());
     }
+
+    public Usuario buscarPorUsername(String username) {
+        return this.usuarioDAO.buscarPorUsername(username);
+    }
 }

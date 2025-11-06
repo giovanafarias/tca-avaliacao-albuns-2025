@@ -19,6 +19,10 @@ public class Avaliacao {
         this.album = album;
     }
 
+    public Avaliacao() {
+        //TODO Auto-generated constructor stub
+    }
+
     public Integer getId() {
         return id;
     }
@@ -68,34 +72,6 @@ public class Avaliacao {
     }
 
     public String toString() {
-        return "Avaliação de " + usuario.getNome() + " para o álbum " + album.toString() + ": " + nota + " estrelas. Comentário: " + comentario;
-    }
-
-    public void getTotalAvalicoes() {
-
-    }
-
-    public void adicionarComentario() {
-        
-    }
-
-    public void editarComentario() {
-        
-    }
-
-    public void removerComentario() {
-        
-    }
-
-    public void adicionarNota() {
-        
-    }
-
-    public void editarNota() {
-        
-    }
-
-    public void removerNota() {
-        
+        return "Avaliaï¿½ï¿½o de " + usuario.getNome() + " para o ï¿½lbum " + album.toString() + ": " + nota + " estrelas. Comentï¿½rio: " + comentario;
     }
 }
