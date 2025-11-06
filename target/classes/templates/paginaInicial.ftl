@@ -1,12 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heartbeat</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&icon_names=account_circle,bookmark,favorite,home,settings" rel="stylesheet"/>
 </head>
 <body>
-oi
+    <div class="container">
+        <aside class="sidebar">
+            <div class="icon"><span class="material-symbols-outlined">account_circle</span></div>
+            <div class="icon"><span class="material-symbols-outlined">home</span></div>
+            <div class="icon"><span class="material-symbols-outlined">favorite</span></div>
+            <div class="icon"><span class="material-symbols-outlined">bookmark</span></div>
+            <div class="icon"><span class="material-symbols-outlined">settings</span></div>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <h1 class="logo">Heartbeat</h1>
+                <div class="search-bar">
+                    <input type="text" placeholder="Pesquise...">
+                    <button>Search</button>
+                </div>
+            </header>
+
+            <section class="albums">
+                <#if albuns?has_content>
+                    <#list albuns as album>
+                        <div class="album">
+                            <img src="${album.capa}" alt="${album.titulo}">
+                            <p><strong>${album.titulo}</strong> - ${album.artista.nome}</p>
+                        </div>
+                    </#list>
+                <#else>
+                    <p>Nenhum álbum encontrado.</p>
+                </#if>
+            </section>
+        </main>
+    </div>
 </body>
 </html>

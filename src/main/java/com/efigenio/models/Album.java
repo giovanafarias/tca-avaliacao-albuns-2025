@@ -3,33 +3,42 @@ package com.efigenio.models;
 import java.sql.Date;
 
 public class Album {
-    private String id;
+    private Integer id;
     private String titulo;
     private Date dataLancamento;
     private String descricao;
     private Integer duracao;
+    private String capa;
     private Artista artista;
     private Musica[] musicas;
     private GeneroMusical generoMusical;
     private Avaliacao[] avaliacoes;
 
-    public Album(String id, String titulo, Date dataLancamento, String descricao, Integer duracao, Artista artista, Musica[] musicas, GeneroMusical generoMusical, Avaliacao[] avaliacoes){
+    public Album(Integer id, String titulo, Date dataLancamento, String descricao, Integer duracao, String capa, Artista artista, Musica[] musicas, GeneroMusical generoMusical, Avaliacao[] avaliacoes){
         this.id = id;
         this.titulo = titulo;
         this.dataLancamento = dataLancamento;
         this.descricao = descricao;
         this.duracao = duracao;
+        this.capa = capa;
         this.artista = artista;
         this.musicas = musicas;
         this.generoMusical = generoMusical;
         this.avaliacoes = avaliacoes;
     }
 
-    public String getId() {
+    public Album(Integer id, String titulo, String capa, Artista artista) {
+        this.id = id;
+        this.titulo = titulo;
+        this.capa = capa;
+        this.artista = artista;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -63,6 +72,14 @@ public class Album {
 
     public void setDuracao(Integer duracao) {
         this.duracao = duracao;
+    }
+
+    public String getCapa() {
+        return capa;
+    }
+
+    public void setCapa(String capa) {
+        this.capa = capa;
     }
 
     public Artista getArtista() {
@@ -104,33 +121,5 @@ public class Album {
                "\nDuração: " + this.duracao + " segundos" +
                "\nGênero: " + this.generoMusical.getNome() +
                "\nMúsicas: " + java.util.Arrays.toString(this.musicas);
-    }
-
-    public void getDuracaoTotal() {
-        int duracaoTotal = 0;
-        for (Musica musica : musicas) {
-            duracaoTotal += musica.getDuracao();
-        }
-        System.out.println("Duração total do álbum '" + this.titulo + "': " + duracaoTotal + " segundos");
-    }
-
-    public void getListaDeMusicas() {
-        System.out.println("Lista de músicas do álbum '" + this.titulo + "':");
-        for (Musica musica : musicas) {
-            System.out.println("- " + musica.getTitulo() + " (" + musica.getDuracao() + " segundos)");
-        }
-    }
-
-    public void getMediaAvaliacoes() {
-        if (avaliacoes.length == 0) {
-            System.out.println("Nenhuma avaliação disponível para o álbum '" + this.titulo + "'.");
-            return;
-        }
-        double somaNotas = 0;
-        for (Avaliacao avaliacao : avaliacoes) {
-            somaNotas += avaliacao.getNota();
-        }
-        double media = somaNotas / avaliacoes.length;
-        System.out.printf("Média das avaliações do álbum '%s': %.2f estrelas%n", this.titulo, media);
     }
 }

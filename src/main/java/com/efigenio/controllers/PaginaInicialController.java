@@ -1,5 +1,6 @@
 package com.efigenio.controllers;
 
+import java.util.List;
 import java.util.Map;
 
 import com.efigenio.models.*;
@@ -9,10 +10,14 @@ import io.javalin.http.Handler;
 
 public class PaginaInicialController {
     public Handler get = ctx -> {
-        Usuario usuarioLogado = ctx.sessionAttribute("usuarioLogado");
 
+        AlbumRepository albumRepository = new AlbumRepository();
+        Usuario usuarioLogado = ctx.sessionAttribute("usuarioLogado");
+        List<Album> albuns = albumRepository.listarTodos();
+        
         ctx.render("paginaInicial.ftl", Map.of(
-            "usuario", usuarioLogado
+            "usuario", usuarioLogado,
+            "albuns", albuns
         ));
     };
 }
