@@ -1,2 +1,10 @@
-24.10-31.10: Fizemos uma breve adição das classes, porém focamos nos diagramas e a engenharia então tudo ainda está 
-sujeito a mudanças. Em relação ao front, adicionamos a tela de login e criamos a pasta uploads para a imagem da logo do sistema.
+24.10-31.10: Fizemos uma breve adição das classes, porém focamos nos diagramas e a engenharia
+então tudo ainda está sujeito a mudanças. Em relação ao front, adicionamos a tela de login e 
+criamos a pasta uploads para a imagem da logo do sistema.
+
+31.10-07.11: Fizemos mais algumas telas, implementamos o banco de dados, e o cadastro e login
+de novos usuários (ainda faltam algumas validações), mas tenho em mente a ideia de "fazer o 
+grosso" e depois aperfeiçoar o código, se houver tempo.
+Obs: houveram alguns commits, pelo que vi no git, com o nome de outras pessoas, que não 
+são da dupla, acredito que tenha sido bug do vscode, ou estava logado numa conta diferente 
+e não percebemos.

@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda INFO24</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/login-cadastro.css">
+    <link rel="stylesheet" href="/css/login-cadastro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Molle:ital@1&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="box">
-        <img src="uploads/logo.png" alt="Logo">
+        <img src="/uploads/logo.png" alt="Logo">
         <h1>Heartbeat</h1>
 
         <form method="post" action="/cadastro">

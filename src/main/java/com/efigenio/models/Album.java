@@ -34,6 +34,10 @@ public class Album {
         this.artista = artista;
     }
 
+    public Album() {
+        //TODO Auto-generated constructor stub
+    }
+
     public Integer getId() {
         return id;
     }
@@ -117,9 +121,9 @@ public class Album {
     public String toString() {
         return this.titulo + " - " + this.artista.getNome() + 
                " (" + this.dataLancamento + ")" +
-               "\nDescrição: " + this.descricao +
-               "\nDuração: " + this.duracao + " segundos" +
-               "\nGênero: " + this.generoMusical.getNome() +
-               "\nMúsicas: " + java.util.Arrays.toString(this.musicas);
+               "\nDescriï¿½ï¿½o: " + this.descricao +
+               "\nDuraï¿½ï¿½o: " + this.duracao + " segundos" +
+               "\nGï¿½nero: " + this.generoMusical.getNome() +
+               "\nMï¿½sicas: " + java.util.Arrays.toString(this.musicas);
     }
 }

@@ -8,11 +8,13 @@ public class Rotas {
     private UsuarioController usuarioController;
     private IndexController indexController;
     private PaginaInicialController paginaInicialController;
+    private PerfilController perfilController;
 
     public Rotas(){
         this.usuarioController = new UsuarioController();
         this.indexController = new IndexController();
         this.paginaInicialController = new PaginaInicialController();
+        this.perfilController = new PerfilController();
     }
 
     public void registraRotas(Javalin app){
@@ -25,7 +27,13 @@ public class Rotas {
 
         app.get("/home", paginaInicialController.get);
 
-        app.get("/perfil/:username", usuarioController.getPerfil);
+        app.get("/perfil/{username}", perfilController.getPerfil);
+
+        app.get("/editar-perfil/{username}", perfilController.getEditarPerfil);
+        app.post("/editar-perfil/{username}", perfilController.postEditarPerfil);
+
+        app.get("/editar-review/{username}/{titulo}", perfilController.getEditarReview);
+        app.post("/editar-review/{username}/{titulo}", perfilController.postEditarReview);
     }
 
 }

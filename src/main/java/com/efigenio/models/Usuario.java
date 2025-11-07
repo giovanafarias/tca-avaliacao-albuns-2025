@@ -9,7 +9,7 @@ public class Usuario {
     private String foto;
     private Avaliacao[] avaliacoes;
     
-    public Usuario(Integer id, String nome, String username, String email, String senha, String foto,Avaliacao[] avaliacoes){
+    public Usuario(Integer id, String nome, String username, String email, String senha, String foto, Avaliacao[] avaliacoes){
         this.id = id;
         this.nome = nome;
         this.username = username;

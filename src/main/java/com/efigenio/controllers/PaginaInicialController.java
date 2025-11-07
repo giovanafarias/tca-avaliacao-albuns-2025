@@ -15,7 +15,7 @@ public class PaginaInicialController {
         Usuario usuarioLogado = ctx.sessionAttribute("usuarioLogado");
         List<Album> albuns = albumRepository.listarTodos();        
         
-        ctx.render("paginaInicial.ftl", Map.of(
+        ctx.render("pagina-inicial.ftl", Map.of(
             "usuario", usuarioLogado,
             "albuns", albuns
         ));

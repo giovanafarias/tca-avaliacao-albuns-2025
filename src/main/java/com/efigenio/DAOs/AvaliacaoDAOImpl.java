@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.efigenio.database.FabricaDeConexao;
+import com.efigenio.models.Album;
 import com.efigenio.models.Avaliacao;
+import com.efigenio.models.Usuario;
 import com.efigenio.models.interfaces.AvaliacaoDAO;
 
 public class AvaliacaoDAOImpl implements AvaliacaoDAO {
@@ -24,6 +26,30 @@ public class AvaliacaoDAOImpl implements AvaliacaoDAO {
         List<Avaliacao> avaliacoes = new ArrayList<>();
 
         try {
+            String query = "SELECT username, foto, titulo, nota, comentario " +
+               "FROM vw_avaliacoes_detalhadas " +
+               "WHERE username = ?";
+
+            PreparedStatement pstm = conexao.prepareStatement(query);
+            pstm.setString(1, username);
+            ResultSet rs = pstm.executeQuery();
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setNome(rs.getString("username"));
+                usuario.setFoto(rs.getString("foto"));
+
+                Album album = new Album();
+                album.setTitulo(rs.getString("titulo"));
+
+                Avaliacao avaliacao = new Avaliacao();
+                avaliacao.setNota(rs.getInt("nota"));
+                avaliacao.setComentario(rs.getString("comentario"));
+                avaliacao.setUsuario(usuario);
+                avaliacao.setAlbum(album);
+
+                avaliacoes.add(avaliacao);
+            }
 
         } catch (Exception e) {
             System.out.println("Erro ao listar avaliações: " + e.getMessage());
