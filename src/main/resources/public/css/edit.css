@@ -1,0 +1,30 @@
+.foto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.foto-perfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.upload-label {
+  background: #5c1717;
+  color: #ffd8d8;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.upload-label:hover {
+  background: #5c1717;
+  transform: scale(1.05);
+}

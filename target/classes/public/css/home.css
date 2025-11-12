@@ -44,7 +44,7 @@ body {
 
 .icon .material-symbols-outlined {
     font-size: 32px;
-    color: #ffffff;
+    color: #ffd8d8;
     transition: color 0.3s, transform 0.2s;
 }
 
@@ -53,7 +53,7 @@ body {
 }
 
 .icon:hover .material-symbols-outlined {
-    color: #fff;
+    color: #ffd8d8;
     transform: scale(1.15);
 }
 
@@ -76,7 +76,7 @@ body {
 header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 60px;
     margin-bottom: 40px;
 }
 
@@ -97,7 +97,7 @@ header {
 .search-bar {
     display: block;
     align-items: center;
-    background-color: rgba(255,255,255,0.1);
+    background-color: #ffffff1a;
     padding: 8px;
     border-radius: 50px;
     gap: 10px;
@@ -108,7 +108,7 @@ header {
     border: none;
     border-radius: 20px;
     width: 260px;
-    background-color: rgba(255,255,255,0.9);
+    background-color: #ffffffe6;
     color: #000;
     outline: none;
 }
@@ -150,7 +150,7 @@ header {
 
 .album p {
     font-size: 14px;
-    color: #fff;
+    color: #ffd8d8;
     margin: 0;
 }
 

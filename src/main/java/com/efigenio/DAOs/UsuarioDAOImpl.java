@@ -31,7 +31,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             ResultSet rs = checkStmt.executeQuery();
 
             if (rs.next() && rs.getInt("total") > 0) {
-                System.out.println("Usu�rio ou e-mail j� existentes!");
+                System.out.println("Usuario ou e-mail ja existentes!");
                 return null; 
             }
 
@@ -49,7 +49,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             pstm.executeUpdate();
             pstm.close();
 
-            System.out.println("Usu�rio criado com sucesso!");
+            System.out.println("Usuario criado com sucesso!");
             return usuario;
 
         } catch (SQLException e) {
@@ -102,6 +102,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                 usuario.setUsername(rs.getString("username"));
                 usuario.setEmail(rs.getString("email"));
                 usuario.setSenha(rs.getString("senha"));
+                usuario.setFoto(rs.getString("foto"));
                 return usuario;
             }
             
@@ -124,13 +125,52 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     }
 
     @Override
-    public Usuario editarPerfil(Integer id, Usuario usuarioAtualizado) {
-        try {
-            
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }    
+    public Usuario atualizarPerfil(Usuario usuario) {
+        String queryComFoto = "UPDATE tca_usuario SET nome = ?, username = ?, foto = ? WHERE id_usuario = ?";
+        String querySemFoto = "UPDATE tca_usuario SET nome = ?, username = ? WHERE id_usuario = ?";
 
+        try {
+            PreparedStatement pstm;
+
+            if (usuario.getFoto() != null && !usuario.getFoto().isEmpty()) {
+                pstm = conexao.prepareStatement(queryComFoto);
+                pstm.setString(1, usuario.getNome());
+                pstm.setString(2, usuario.getUsername());
+                pstm.setString(3, usuario.getFoto());
+                pstm.setInt(4, usuario.getId());
+            } else {
+                pstm = conexao.prepareStatement(querySemFoto);
+                pstm.setString(1, usuario.getNome());
+                pstm.setString(2, usuario.getUsername());
+                pstm.setInt(3, usuario.getId());
+            }
+
+            int linhasAfetadas = pstm.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                System.out.println("Perfil atualizado com sucesso!");
+                return usuario;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar perfil: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+    @Override
+    public Usuario removerFotoDePerfil(Integer id) {
+        String query = "UPDATE tca_usuario SET foto = NULL WHERE id_usuario = ?";
+
+        try {
+            PreparedStatement pstm = conexao.prepareStatement(query);
+            pstm.setInt(1, id);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao remover foto de perfil: " + e.getMessage());
+        }
         return null;
     }
 

@@ -11,8 +11,7 @@ public class UsuarioRepository {
     }
 
     public Usuario criaUsuario(Usuario usuario) {
-        Usuario usuarioCriado = this.usuarioDAO.criaUsuario(usuario);
-        return usuarioCriado;
+        return this.usuarioDAO.criaUsuario(usuario);
     }
 
     public Usuario loginUsuario(Usuario usuario) {
@@ -21,5 +20,13 @@ public class UsuarioRepository {
 
     public Usuario buscarPorUsername(String username) {
         return this.usuarioDAO.buscarPorUsername(username);
+    }
+
+    public Usuario atualizarPerfil(Usuario usuario) {
+        return this.usuarioDAO.atualizarPerfil(usuario);
+    }
+
+    public Usuario removerFotoDePerfil(Integer id) {
+        return this.usuarioDAO.removerFotoDePerfil(id);
     }
 }

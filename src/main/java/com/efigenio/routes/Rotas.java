@@ -31,6 +31,7 @@ public class Rotas {
 
         app.get("/editar-perfil/{username}", perfilController.getEditarPerfil);
         app.post("/editar-perfil/{username}", perfilController.postEditarPerfil);
+        app.post("/remover-foto/{username}", perfilController.postRemoverFoto);
 
         app.get("/editar-review/{username}/{titulo}", perfilController.getEditarReview);
         app.post("/editar-review/{username}/{titulo}", perfilController.postEditarReview);

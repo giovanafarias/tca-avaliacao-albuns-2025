@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heartbeat - Login</title>
-    <link rel="stylesheet" href="/css/login-cadastro.css">
+    <link rel="stylesheet" href="/css/forms.css">
     <link href="https://fonts.googleapis.com/css2?family=Molle:ital@1&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -12,7 +12,7 @@
     <img src="/uploads/logo.png" alt="Logo">
     <h1>Heartbeat</h1>
     <form action="/login" method="post">
-      <label for="usuario">Nome de usu�rio</label>
+      <label for="usuario">Username</label>
       <input type="text" id="usuario" name="username" placeholder="Digite seu nome">
       
       <label for="senha">Senha</label>

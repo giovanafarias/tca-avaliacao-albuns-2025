@@ -12,7 +12,9 @@ public interface UsuarioDAO {
 
     Usuario removerConta(Integer id);
 
-    Usuario editarPerfil(Integer id, Usuario usuarioAtualizado);
+    Usuario atualizarPerfil(Usuario usuario);
+
+    Usuario removerFotoDePerfil(Integer id);
 
     Usuario avaliarAlbum(Usuario usuario, Integer albumId, Integer nota, String comentario);
 

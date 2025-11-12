@@ -20,18 +20,12 @@
         </aside>
 
         <main class="main-content">
-            <header>
-                <h1 class="logo">
-                    Heartbeat
-                    <img src="/uploads/logo.png" alt="Logo Heartbeat">
-                </h1>
-            </header>
 
             <div class="profile-section">
                 <div class="profile-info">
                     <div class="profile-pic">
-                        <#if usuario.foto?? && usuario.foto?length > 0>
-                            <img src="uploads/${usuario.foto}" alt="Foto de ${usuario.nome}">
+                        <#if usuario.foto?has_content>
+                            <img src="/uploads/${usuario.foto}" alt="Foto de ${usuario.nome}">
                         <#else>
                             <span class="material-symbols-outlined">account_circle</span>
                         </#if>
@@ -51,8 +45,8 @@
                         <#list avaliacoes as review>
                             <div class="review-card">
                                 <div class="review-header">
-                                    <#if usuario.foto?? && usuario.foto?length > 0>
-                                        <img src="uploads/${usuario.foto}" alt="Foto de ${usuario.nome}">
+                                    <#if usuario.foto?has_content>
+                                        <img src="/uploads/${usuario.foto}" alt="Foto de ${usuario.nome}">
                                     <#else>
                                         <span class="material-symbols-outlined">account_circle</span>
                                     </#if>
