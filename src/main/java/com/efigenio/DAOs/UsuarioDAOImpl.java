@@ -58,7 +58,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
         return null;
     }
-    
+
     @Override
     public Usuario autenticaUsuario(String username, String senha) {
         String query = "SELECT * FROM tca_usuario WHERE username = ? AND senha = ?";
@@ -111,6 +111,29 @@ public class UsuarioDAOImpl implements UsuarioDAO {
         }
 
        return null;
+    }
+
+    @Override
+    public Boolean verificaUsername(Usuario usuario) {
+        try {
+            String checkQuery = "SELECT COUNT(*) AS total FROM tca_usuario WHERE username = ?";
+            PreparedStatement checkStmt = conexao.prepareStatement(checkQuery);
+            checkStmt.setString(1, usuario.getUsername());
+            ResultSet rs = checkStmt.executeQuery();
+
+            if (rs.next() && rs.getInt("total") > 0) {
+                System.out.println("Nome de usuario ja em uso!");
+                return true; 
+            }
+
+            rs.close();
+            checkStmt.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return false;
     }
 
     @Override

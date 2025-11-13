@@ -34,10 +34,10 @@
             </#if>
 
             <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" value="${usuario.nome}">
+            <input type="text" id="nome" name="nome" value="${usuario.nome}" required>
 
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" value="${usuario.username}">
+            <input type="text" id="username" name="username" value="${usuario.username}" required>
 
             <p>Altere e-mail ou senha nas configurações.</p>
 

@@ -26,6 +26,10 @@ public class UsuarioRepository {
         return this.usuarioDAO.atualizarPerfil(usuario);
     }
 
+    public Boolean verificaUsername(Usuario usuario) {
+        return this.usuarioDAO.verificaUsername(usuario);
+    }
+
     public Usuario removerFotoDePerfil(Integer id) {
         return this.usuarioDAO.removerFotoDePerfil(id);
     }

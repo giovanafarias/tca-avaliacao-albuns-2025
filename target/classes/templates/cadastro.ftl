@@ -15,16 +15,16 @@
 
         <form method="post" action="/cadastro">
             <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" placeholder="Seu nome">
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
 
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Nome de usu�rio">
+            <input type="text" id="username" name="username" placeholder="Nome de usuario" required>
 
             <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="Digite seu email">
+            <input type="email" id="email" name="email" placeholder="Digite seu email" required>
 
             <label for="senha">Senha</label>
-            <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
 
             <div class="buttons">
                 <a href="/">Volte</a>

@@ -88,6 +88,14 @@ public class PerfilController {
         usuario.setNome(nome);
         usuario.setUsername(username);
 
+        if(usuarioRepository.verificaUsername(usuario) && !username.equals(usernamePath)) {
+            ctx.render("editar-perfil.ftl", Map.of(
+                "usuario", usuario,
+                "erro", "Username j� em uso!"
+            ));
+            return;
+        }
+
         if (fotoPath != null) {
             usuario.setFoto(fotoPath);
         }

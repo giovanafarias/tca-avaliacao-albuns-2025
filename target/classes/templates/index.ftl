@@ -13,10 +13,10 @@
     <h1>Heartbeat</h1>
     <form action="/login" method="post">
       <label for="usuario">Username</label>
-      <input type="text" id="usuario" name="username" placeholder="Digite seu nome">
+      <input type="text" id="usuario" name="username" placeholder="Digite seu nome" required>
       
       <label for="senha">Senha</label>
-      <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+      <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
 
         <div class="buttons">
           <a href="cadastro">Cadastre-se</a>

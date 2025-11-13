@@ -10,6 +10,8 @@ public interface UsuarioDAO {
 
     Usuario buscarPorUsername(String username);
 
+    Boolean verificaUsername(Usuario usuario);
+
     Usuario removerConta(Integer id);
 
     Usuario atualizarPerfil(Usuario usuario);
