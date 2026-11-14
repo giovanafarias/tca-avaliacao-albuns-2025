@@ -115,22 +115,18 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
     @Override
     public Boolean verificaUsername(Usuario usuario) {
-        try {
-            String checkQuery = "SELECT COUNT(*) AS total FROM tca_usuario WHERE username = ?";
-            PreparedStatement checkStmt = conexao.prepareStatement(checkQuery);
+        String checkQuery = "SELECT COUNT(*) AS total FROM tca_usuario WHERE username = ? AND id_usuario != ?";
+
+        try (PreparedStatement checkStmt = conexao.prepareStatement(checkQuery)) {
             checkStmt.setString(1, usuario.getUsername());
+            checkStmt.setInt(2, usuario.getId());
             ResultSet rs = checkStmt.executeQuery();
 
-            if (rs.next() && rs.getInt("total") > 0) {
-                System.out.println("Nome de usuario ja em uso!");
-                return true; 
+            if (rs.next()) {
+                return rs.getInt("total") > 0;
             }
-
-            rs.close();
-            checkStmt.close();
-
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Erro ao verificar username: " + e.getMessage());
         }
 
         return false;

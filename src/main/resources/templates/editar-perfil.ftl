@@ -36,6 +36,7 @@
             <label for="nome">Nome</label>
             <input type="text" id="nome" name="nome" value="${usuario.nome}" required>
 
+            <#if erro?has_content><p>${erro}</p></#if>
             <label for="username">Username</label>
             <input type="text" id="username" name="username" value="${usuario.username}" required>
 

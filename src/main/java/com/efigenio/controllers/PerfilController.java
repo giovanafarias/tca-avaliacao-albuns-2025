@@ -60,6 +60,38 @@ public class PerfilController {
         Path outPath = null;
         String fotoPath = null;
 
+        UsuarioRepository usuarioRepository = new UsuarioRepository();
+        Usuario usuario = usuarioRepository.buscarPorUsername(usernamePath);
+        String fotoAntiga = usuario.getFoto();
+
+        if (usuarioRepository.verificaUsername(usuario) && !username.equals(usernamePath)) {
+            ctx.render("editar-perfil.ftl", Map.of(
+                "usuario", usuario,
+                "erro", "Username em uso!"
+            ));
+            return;
+        }
+
+        if (!username.equals(usernamePath) && fotoAntiga != null) {
+            Path uploadDir = Path.of("src/main/resources/public/uploads");
+            Path caminhoAntigo = uploadDir.resolve(fotoAntiga);
+
+            String extension = "";
+            int i = fotoAntiga.lastIndexOf('.');
+            if (i > 0) {
+                extension = fotoAntiga.substring(i);
+            }
+
+            String novoNome = username + "-foto" + extension;
+            Path novoCaminho = uploadDir.resolve(novoNome);
+
+            if (Files.exists(caminhoAntigo)) {
+                Files.move(caminhoAntigo, novoCaminho, StandardCopyOption.REPLACE_EXISTING);
+            }
+
+            usuario.setFoto(novoNome);
+        }
+
         if (inputFile != null && inputFile.size() > 0 && inputFile.filename() != null && !inputFile.filename().isBlank()) {
             String originalFileName = inputFile.filename();
 
@@ -82,27 +114,16 @@ public class PerfilController {
             fotoPath = fileName;
         }
 
-        UsuarioRepository usuarioRepository = new UsuarioRepository();
-        Usuario usuario = usuarioRepository.buscarPorUsername(usernamePath);
-
-        usuario.setNome(nome);
-        usuario.setUsername(username);
-
-        if(usuarioRepository.verificaUsername(usuario) && !username.equals(usernamePath)) {
-            ctx.render("editar-perfil.ftl", Map.of(
-                "usuario", usuario,
-                "erro", "Username j� em uso!"
-            ));
-            return;
-        }
-
         if (fotoPath != null) {
             usuario.setFoto(fotoPath);
         }
 
+        usuario.setNome(nome);
+        usuario.setUsername(username);
+
         usuarioRepository.atualizarPerfil(usuario);
 
-        ctx.redirect("/perfil/" + username);
+        ctx.redirect("/perfil/" + usuario.getUsername());
     };
 
     public Handler postRemoverFoto = ctx -> {
@@ -125,7 +146,7 @@ public class PerfilController {
 
         usuarioRepository.removerFotoDePerfil(usuario.getId());
 
-        ctx.redirect("/editar-perfil/" + username);
+        ctx.redirect("/editar-perfil/" + usuario.getUsername());
     };
 
     public Handler getEditarReview = ctx -> {
@@ -133,7 +154,7 @@ public class PerfilController {
     };
 
     public Handler postEditarReview = ctx -> {
-        ctx.redirect("/perfil/{username}");
+        ctx.redirect("/perfil/" + ctx.pathParam("username"));
     };
 
 }
